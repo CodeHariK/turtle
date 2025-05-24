@@ -49,7 +49,7 @@ class ExpandableBottomSheet extends StatefulWidget {
   ///
   /// [persistentContentHeight] has to be greater 0.
   const ExpandableBottomSheet({
-    Key? key,
+    super.key,
     required this.expandableContent,
     required this.background,
     this.persistentContentHeight = 0.0,
@@ -62,8 +62,7 @@ class ExpandableBottomSheet extends StatefulWidget {
     this.onIsContractedCallback,
     this.enableToggle = false,
     this.isDraggable = true,
-  })  : assert(persistentContentHeight >= 0),
-        super(key: key);
+  }) : assert(persistentContentHeight >= 0);
 
   @override
   ExpandableBottomSheetState createState() => ExpandableBottomSheetState();
@@ -121,14 +120,16 @@ class ExpandableBottomSheetState extends State<ExpandableBottomSheet>
       upperBound: 1.0,
     );
     _controller.addStatusListener(_handleAnimationStatusUpdate);
-    WidgetsBinding.instance!
-        .addPostFrameCallback((_) => _afterUpdateWidgetBuild(true));
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _afterUpdateWidgetBuild(true),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!
-        .addPostFrameCallback((_) => _afterUpdateWidgetBuild(false));
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _afterUpdateWidgetBuild(false),
+    );
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
@@ -136,19 +137,20 @@ class ExpandableBottomSheetState extends State<ExpandableBottomSheet>
           child: Stack(
             clipBehavior: Clip.hardEdge,
             children: <Widget>[
-              Align(
-                alignment: Alignment.topLeft,
-                child: widget.background,
-              ),
+              Align(alignment: Alignment.topLeft, child: widget.background),
               AnimatedBuilder(
                 animation: _controller,
                 builder: (_, Widget? child) {
                   if (_controller.isAnimating) {
-                    _positionOffset = _animationMinOffset +
+                    _positionOffset =
+                        _animationMinOffset +
                         _controller.value * _draggableHeight;
-                    WidgetsBinding.instance!.addPostFrameCallback((_) {
-                      widget.onOffsetChanged
-                          ?.call(_positionOffset, _minOffset, _maxOffset);
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      widget.onOffsetChanged?.call(
+                        _positionOffset,
+                        _minOffset,
+                        _maxOffset,
+                      );
                     });
                   }
                   return Positioned(
@@ -161,8 +163,9 @@ class ExpandableBottomSheetState extends State<ExpandableBottomSheet>
                 child: GestureDetector(
                   onTap: _toggle,
                   onVerticalDragDown: widget.isDraggable ? _dragDown : (_) {},
-                  onVerticalDragUpdate:
-                      widget.isDraggable ? _dragUpdate : (_) {},
+                  onVerticalDragUpdate: widget.isDraggable
+                      ? _dragUpdate
+                      : (_) {},
                   onVerticalDragEnd: widget.isDraggable ? _dragEnd : (_) {},
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -174,7 +177,7 @@ class ExpandableBottomSheetState extends State<ExpandableBottomSheet>
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -210,8 +213,8 @@ class ExpandableBottomSheetState extends State<ExpandableBottomSheet>
 
     double checkedPersistentContentHeight =
         (widget.persistentContentHeight < contentHeight)
-            ? widget.persistentContentHeight
-            : contentHeight;
+        ? widget.persistentContentHeight
+        : contentHeight;
 
     final newMinOffset = context.size!.height - contentHeight;
     final newMaxOffset = context.size!.height - checkedPersistentContentHeight;
@@ -387,8 +390,4 @@ class ExpandableBottomSheetState extends State<ExpandableBottomSheet>
 }
 
 /// The status of the expandable content.
-enum ExpansionStatus {
-  expanded,
-  middle,
-  contracted,
-}
+enum ExpansionStatus { expanded, middle, contracted }

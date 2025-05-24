@@ -2,10 +2,7 @@ import 'models.dart';
 import 'package:flutter/material.dart';
 
 class SongTile extends StatefulWidget {
-  const SongTile({
-    Key? key,
-    required this.index,
-  }) : super(key: key);
+  const SongTile({super.key, required this.index});
 
   final int index;
 
@@ -26,20 +23,14 @@ class _SongTileState extends State<SongTile> {
         leading: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('#${widget.index + 1}',
-                style: TextStyle(
-                  fontSize: 17,
-                  color: Colors.grey[400]!,
-                )),
-            const SizedBox(
-              width: 12,
+            Text(
+              '#${widget.index + 1}',
+              style: TextStyle(fontSize: 17, color: Colors.grey[400]!),
             ),
+            const SizedBox(width: 12),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                album.albumCoverUrl,
-                fit: BoxFit.cover,
-              ),
+              child: Image.network(album.albumCoverUrl, fit: BoxFit.cover),
             ),
           ],
         ),
@@ -52,23 +43,16 @@ class _SongTileState extends State<SongTile> {
         ),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 6.0),
-          child: Row(children: [
-            Icon(
-              Icons.headphones,
-              color: Colors.grey[400]!,
-              size: 15,
-            ),
-            const SizedBox(
-              width: 4,
-            ),
-            Text(
-              '63,527,129',
-              style: TextStyle(
-                color: Colors.grey[400]!,
-                fontSize: 13,
+          child: Row(
+            children: [
+              Icon(Icons.headphones, color: Colors.grey[400]!, size: 15),
+              const SizedBox(width: 4),
+              Text(
+                '63,527,129',
+                style: TextStyle(color: Colors.grey[400]!, fontSize: 13),
               ),
-            )
-          ]),
+            ],
+          ),
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
@@ -84,10 +68,7 @@ class _SongTileState extends State<SongTile> {
                 color: selected ? Colors.green : Colors.white,
               ),
             ),
-            const Icon(
-              Icons.more_horiz,
-              color: Colors.white,
-            )
+            const Icon(Icons.more_horiz, color: Colors.white),
           ],
         ),
       ),

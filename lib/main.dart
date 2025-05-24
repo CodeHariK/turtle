@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:turtle/anim_playground/main.dart';
 import 'package:turtle/ariana/main.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:turtle/renderobject/main.dart';
 
 part 'main.g.dart';
 
 void main() {
   // runApp(Ariana());
-  // runApp(AnimPlayground());
-  runApp(const ProviderScope(child: MyApp()));
+  // runApp(RenderHome());
+  // runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -46,7 +46,9 @@ class Home extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(title: const Text('Counter example')),
-      body: Center(child: Text('${ref.watch(counterProvider)}')),
+      body: Column(
+        children: [Center(child: Text('${ref.watch(counterProvider)}'))],
+      ),
       floatingActionButton: FloatingActionButton(
         // The read method is a utility to read a provider without listening to it
         onPressed: () => ref.read(counterProvider.notifier).increment(),

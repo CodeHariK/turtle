@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChoiceTab extends StatelessWidget {
-  const ChoiceTab({Key? key}) : super(key: key);
+  const ChoiceTab({super.key});
 
   @override
   Widget build(BuildContext context) {

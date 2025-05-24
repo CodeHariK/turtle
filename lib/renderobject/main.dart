@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:turtle/renderobject/animatedbox.dart';
 import 'package:turtle/renderobject/mycolumn.dart';
 import 'package:turtle/renderobject/myrow.dart';
 import 'package:turtle/renderobject/redbox.dart';
+import 'package:turtle/renderobject/rendercircle.dart';
 
-void main() {
-  runApp(ProviderScope(child: Home()));
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
+class RenderHome extends StatelessWidget {
+  const RenderHome({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: Scaffold(
+    return MaterialApp(
+      home: Scaffold(
         body: Column(
           children: [
             RedBox(),
@@ -27,6 +22,7 @@ class Home extends StatelessWidget {
                   color: Color(0xFF2196F3),
                   child: SizedBox(width: 50, height: 50),
                 ),
+                CircleBox(color: Colors.orange, diameter: 40),
                 ColoredBox(
                   color: Color(0xFF4CAF50),
                   child: SizedBox(width: 70, height: 30),
@@ -38,7 +34,7 @@ class Home extends StatelessWidget {
               ],
             ),
 
-            Demo(),
+            AnimatedBoxDemo(),
 
             Expanded(
               child: MyColumn(
@@ -67,13 +63,13 @@ class Home extends StatelessWidget {
   }
 }
 
-class Demo extends StatefulWidget {
-  const Demo({super.key});
+class AnimatedBoxDemo extends StatefulWidget {
+  const AnimatedBoxDemo({super.key});
   @override
-  State<Demo> createState() => _DemoState();
+  State<AnimatedBoxDemo> createState() => _AnimatedBoxDemoState();
 }
 
-class _DemoState extends State<Demo> {
+class _AnimatedBoxDemoState extends State<AnimatedBoxDemo> {
   bool big = false;
 
   @override

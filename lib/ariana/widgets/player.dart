@@ -4,10 +4,7 @@ import 'models.dart';
 import 'package:flutter/material.dart';
 
 class Player extends StatelessWidget {
-  const Player({
-    Key? key,
-    required this.percentageOpen,
-  }) : super(key: key);
+  const Player({super.key, required this.percentageOpen});
 
   final double percentageOpen;
 
@@ -20,10 +17,7 @@ class Player extends StatelessWidget {
       constraints: BoxConstraints(maxHeight: height),
       child: Stack(
         children: <Widget>[
-          Container(
-            color: Colors.grey[900],
-            height: height,
-          ),
+          Container(color: Colors.grey[900], height: height),
           Opacity(
             opacity: max(0, 1 - (percentageOpen * 4)),
             child: SizedBox(
@@ -66,12 +60,12 @@ class Player extends StatelessWidget {
             ),
           ),
           Opacity(
-            opacity: percentageOpen > 0.5 ? min(1, max(0, percentageOpen - 0.5) * 2) : 0,
+            opacity: percentageOpen > 0.5
+                ? min(1, max(0, percentageOpen - 0.5) * 2)
+                : 0,
             child: Column(
               children: [
-                SizedBox(
-                  height: imageHeight * 0.9,
-                ),
+                SizedBox(height: imageHeight * 0.9),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +79,11 @@ class Player extends StatelessWidget {
                       children: [
                         const Text(
                           'Thank u, Next',
-                          style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w700),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                         const SizedBox(height: 8),
                         Text(
@@ -98,7 +96,7 @@ class Player extends StatelessWidget {
                       Icons.thumb_up_alt_outlined,
                       size: 20,
                       color: Colors.white,
-                    )
+                    ),
                   ],
                 ),
                 const SizedBox(height: 32),
@@ -119,14 +117,8 @@ class Player extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        '0:00',
-                        style: TextStyle(color: Colors.grey[400]),
-                      ),
-                      Text(
-                        '3:27',
-                        style: TextStyle(color: Colors.grey[400]),
-                      ),
+                      Text('0:00', style: TextStyle(color: Colors.grey[400])),
+                      Text('3:27', style: TextStyle(color: Colors.grey[400])),
                     ],
                   ),
                 ),
@@ -136,11 +128,7 @@ class Player extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Icon(
-                        Icons.shuffle,
-                        size: 32,
-                        color: Colors.white,
-                      ),
+                      const Icon(Icons.shuffle, size: 32, color: Colors.white),
                       const Icon(
                         Icons.skip_previous,
                         size: 32,
@@ -165,11 +153,7 @@ class Player extends StatelessWidget {
                         size: 32,
                         color: Colors.white,
                       ),
-                      const Icon(
-                        Icons.repeat,
-                        size: 32,
-                        color: Colors.white,
-                      )
+                      const Icon(Icons.repeat, size: 32, color: Colors.white),
                     ],
                   ),
                 ),

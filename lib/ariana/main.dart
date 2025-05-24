@@ -9,7 +9,7 @@ import 'widgets/title.dart';
 import 'package:flutter/material.dart' hide Title;
 
 class Ariana extends StatelessWidget {
-  const Ariana({Key? key}) : super(key: key);
+  const Ariana({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +32,7 @@ const coverImage =
 const expandedHeight = 240.0;
 
 class ArianaMusic extends StatefulWidget {
-  const ArianaMusic({
-    Key? key,
-  }) : super(key: key);
+  const ArianaMusic({super.key});
 
   @override
   State<ArianaMusic> createState() => _ArianaMusicState();
@@ -43,7 +41,8 @@ class ArianaMusic extends StatefulWidget {
 class _ArianaMusicState extends State<ArianaMusic> {
   final _controller = ScrollController();
   double _offset = 0;
-  late final double _maxSizeBottomNavigationBar = MediaQuery.of(context).padding.bottom + kBottomNavigationBarHeight;
+  late final double _maxSizeBottomNavigationBar =
+      MediaQuery.of(context).padding.bottom + kBottomNavigationBarHeight;
 
   late double _percentageOpen = 0;
 
@@ -77,23 +76,21 @@ class _ArianaMusicState extends State<ArianaMusic> {
         //
         child: SingleChildScrollView(
           child: BottomNavigationBar(
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.white,
-              backgroundColor: Colors.grey[900],
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.explore_outlined),
-                  label: 'Explore',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.library_music_outlined),
-                  label: 'Library',
-                ),
-              ]),
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white,
+            backgroundColor: Colors.grey[900],
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.explore_outlined),
+                label: 'Explore',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.library_music_outlined),
+                label: 'Library',
+              ),
+            ],
+          ),
         ),
       ),
 
@@ -117,10 +114,7 @@ class _ArianaMusicState extends State<ArianaMusic> {
                 ),
                 child: FlexibleSpaceBar(
                   collapseMode: CollapseMode.parallax,
-                  background: Image.network(
-                    coverImage,
-                    fit: BoxFit.cover,
-                  ),
+                  background: Image.network(coverImage, fit: BoxFit.cover),
                   expandedTitleScale: 1,
                   titlePadding: const EdgeInsets.all(24),
                   title: const Title(),
@@ -142,20 +136,14 @@ class _ArianaMusicState extends State<ArianaMusic> {
               pinned: true,
             ),
             SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return SongTile(
-                    index: index,
-                  );
-                },
-                childCount: listArianaGrandeAlbums.length,
-              ),
+              delegate: SliverChildBuilderDelegate((
+                BuildContext context,
+                int index,
+              ) {
+                return SongTile(index: index);
+              }, childCount: listArianaGrandeAlbums.length),
             ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 120,
-              ),
-            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 120)),
           ],
         ),
 
