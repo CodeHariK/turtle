@@ -13,7 +13,7 @@ import 'ui/core/themes/theme.dart';
 import 'ui/core/ui/scroll_behavior.dart';
 
 /// Default main method
-void main() {
+void Compassmain() {
   // Launch development config by default
   development.main();
 }
