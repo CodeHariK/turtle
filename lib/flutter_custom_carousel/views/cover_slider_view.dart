@@ -76,7 +76,7 @@ class CoverSliderView extends StatelessWidget {
         // either side (5 cards total divided by 2).
         return Transform.translate(
           offset: Offset(ratio * 170 * 2.5, 0),
-          child: child,
+          child: Stack(children: [child, Text(ratio.toStringAsFixed(2))]),
         );
       },
       // Pass in the list of widgets we created above:

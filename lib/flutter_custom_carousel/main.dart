@@ -4,11 +4,11 @@ import 'package:turtle/flutter_custom_carousel/views/views.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const CarouselApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class CarouselApp extends StatelessWidget {
+  const CarouselApp({super.key});
 
   @override
   Widget build(BuildContext context) {

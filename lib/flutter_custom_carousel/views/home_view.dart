@@ -1,7 +1,9 @@
+import 'package:turtle/flutter_custom_carousel/views/hooa.dart';
 import 'package:turtle/flutter_custom_carousel/views/views.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_carousel/flutter_custom_carousel.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:turtle/flutter_custom_carousel/views/wooha.dart';
 
 /// Example showing card vertically scrolling card-based navigation.
 ///
@@ -168,6 +170,31 @@ class _ExampleData {
 }
 
 final List<_ExampleData> _examples = [
+  _ExampleData(
+    id: 'hooa',
+    title: 'hooa',
+    color: const Color.fromARGB(255, 255, 202, 69),
+    builder: (_) => CoverFlowCarouselPage(),
+  ),
+  _ExampleData(
+    id: 'wooha',
+    title: 'Wooha',
+    color: const Color.fromARGB(255, 91, 63, 253),
+    builder: (_) => const AnimatedCarousel(
+      cardWidth: 250.0,
+      cardHeight: 300.0,
+      scaleRatio: 0.98,
+      translateRatio: 1,
+      opacityRatio: 1,
+      overlap: 1,
+    ),
+  ),
+  _ExampleData(
+    id: 'read_me',
+    title: 'Read Me',
+    color: const Color.fromARGB(255, 150, 150, 150),
+    builder: (_) => const ReadMeExample(),
+  ),
   _ExampleData(
     id: 'cover-slider',
     title: 'Cover Slider',

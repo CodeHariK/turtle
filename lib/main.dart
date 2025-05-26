@@ -4,6 +4,7 @@ import 'package:turtle/ariana/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:turtle/compass/app/main.dart';
+import 'package:turtle/flutter_custom_carousel/main.dart';
 import 'package:turtle/renderobject/main.dart';
 import 'package:turtle/vignettes/basketball_ptr/lib/main.dart';
 import 'package:turtle/vignettes/bubble_tab_bar/lib/main.dart';
@@ -44,6 +45,7 @@ void main() {
   // runApp(TicketFoldApp());
 
   // Compassmain();
+  // runApp(CarouselApp());
   // runApp(Ariana());
   // runApp(RenderHome());
   // runApp(const ProviderScope(child: MyApp()));

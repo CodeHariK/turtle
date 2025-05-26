@@ -119,6 +119,7 @@ flutter:
   assets:
     - assets/
     - images/
+    - assets/images/
 
     - assets/activities.json
     - assets/destinations.json

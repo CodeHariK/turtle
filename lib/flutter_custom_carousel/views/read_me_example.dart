@@ -77,32 +77,32 @@ class _ReadMeExampleState extends State<ReadMeExample> {
   Widget _buildSnapRow() {
     const double r = 4;
     Widget getDot(double x, [bool filled = true]) => Positioned(
-          left: pad + (width - pad * 2) * (x + 1) / 2 - r,
-          top: 0,
-          child: Container(
-            width: r * 2,
-            height: r * 2,
-            decoration: BoxDecoration(
-              border: Border.all(width: 2, color: Colors.black),
-              color: filled ? Colors.black : Colors.white,
-              shape: BoxShape.circle,
-            ),
-          ),
-        );
+      left: pad + (width - pad * 2) * (x + 1) / 2 - r,
+      top: 0,
+      child: Container(
+        width: r * 2,
+        height: r * 2,
+        decoration: BoxDecoration(
+          border: Border.all(width: 2, color: Colors.black),
+          color: filled ? Colors.black : Colors.white,
+          shape: BoxShape.circle,
+        ),
+      ),
+    );
 
     Widget getLabel(String str) => Transform.translate(
-          offset: const Offset(-pad, 18),
-          child: SizedBox(
-            width: pad * 2,
-            child: Text(str, textAlign: TextAlign.center),
-          ),
-        );
+      offset: const Offset(-pad, 18),
+      child: SizedBox(
+        width: pad * 2,
+        child: Text(str, textAlign: TextAlign.center),
+      ),
+    );
 
     Widget getTick(double x) => Positioned(
-          left: x - 1,
-          top: r,
-          child: Container(width: 2, height: 12, color: Colors.black),
-        );
+      left: x - 1,
+      top: r,
+      child: Container(width: 2, height: 12, color: Colors.black),
+    );
 
     return SizedBox(
       height: 48,
@@ -149,10 +149,7 @@ class _ReadMeExampleState extends State<ReadMeExample> {
           alignment: Alignment.bottomCenter,
           children: [
             child,
-            Positioned(
-              bottom: 16,
-              child: Text(ratio.toStringAsFixed(2)),
-            ),
+            Positioned(bottom: 16, child: Text(ratio.toStringAsFixed(2))),
             Transform.translate(
               offset: const Offset(0, 20),
               child: const Icon(
@@ -160,13 +157,10 @@ class _ReadMeExampleState extends State<ReadMeExample> {
                 size: 20,
                 color: Colors.black,
               ),
-            )
+            ),
           ],
         );
-        return Transform.translate(
-          offset: Offset(x * ratio, 0),
-          child: card,
-        );
+        return Transform.translate(offset: Offset(x * ratio, 0), child: card);
       },
       onSelectedItemChanged: (value) => setState(() {
         _selectedIndex = value;
@@ -180,17 +174,13 @@ class _ReadMeExampleState extends State<ReadMeExample> {
       ),
     );
 
-    return SizedBox(
-      width: width - pad * 2,
-      height: 260,
-      child: content,
-    );
+    return SizedBox(width: width - pad * 2, height: 260, child: content);
   }
 }
 
 class _ContentCard extends StatelessWidget {
   const _ContentCard(this.index, this.selected, this.settled, {Key? key})
-      : super(key: key);
+    : super(key: key);
 
   final int index;
   final bool selected;
@@ -204,10 +194,7 @@ class _ContentCard extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: selected ? Colors.white : Colors.black12,
-        border: Border.all(
-          width: settled ? 8 : 3,
-          color: Colors.black,
-        ),
+        border: Border.all(width: settled ? 8 : 3, color: Colors.black),
         borderRadius: BorderRadius.circular(16),
       ),
     );

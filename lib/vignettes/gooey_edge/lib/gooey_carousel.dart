@@ -15,11 +15,13 @@ class GooeyCarousel extends StatefulWidget {
   GooeyCarouselState createState() => GooeyCarouselState();
 }
 
-class GooeyCarouselState extends State<GooeyCarousel> with SingleTickerProviderStateMixin {
+class GooeyCarouselState extends State<GooeyCarousel>
+    with SingleTickerProviderStateMixin {
   int _index = 0; // index of the base (bottom) child
   int? _dragIndex; // index of the top child
   Offset _dragOffset = Offset.zero; // starting offset of the drag
-  double _dragDirection = 0; // +1 when dragging left to right, -1 for right to left
+  double _dragDirection =
+      0; // +1 when dragging left to right, -1 for right to left
   bool _dragCompleted = false; // has the drag successfully resulted in a swipe
 
   GooeyEdge _edge = GooeyEdge(count: 25);
@@ -50,30 +52,29 @@ class GooeyCarouselState extends State<GooeyCarousel> with SingleTickerProviderS
     int l = widget.children.length;
 
     return GestureDetector(
-        key: _key,
-        onPanDown: (details) => _handlePanDown(details, _getSize()),
-        onPanUpdate: (details) => _handlePanUpdate(details, _getSize()),
-        onPanEnd: (details) => _handlePanEnd(details, _getSize()),
-        child: Stack(
-          children: <Widget>[
-            widget.children[_index % l],
-            _dragIndex == null
-                ? SizedBox()
-                : ClipPath(
-                    child: widget.children[_dragIndex! % l],
-                    clipBehavior: Clip.hardEdge,
-                    clipper: GooeyEdgeClipper(_edge, margin: 10.0),
-                  ),
-            SunAndMoon(
-              index: _dragIndex ?? 0,
-              isDragComplete: _dragCompleted,
-            )
-          ],
-        ));
+      key: _key,
+      onPanDown: (details) => _handlePanDown(details, _getSize()),
+      onPanUpdate: (details) => _handlePanUpdate(details, _getSize()),
+      onPanEnd: (details) => _handlePanEnd(details, _getSize()),
+      child: Stack(
+        children: <Widget>[
+          widget.children[_index % l],
+          _dragIndex == null
+              ? SizedBox()
+              : ClipPath(
+                  child: widget.children[_dragIndex! % l],
+                  clipBehavior: Clip.hardEdge,
+                  clipper: GooeyEdgeClipper(_edge, margin: 10.0),
+                ),
+          SunAndMoon(index: _dragIndex ?? 0, isDragComplete: _dragCompleted),
+        ],
+      ),
+    );
   }
 
   Size _getSize() {
-    final RenderBox? box = _key.currentContext?.findRenderObject() as RenderBox?;
+    final RenderBox? box =
+        _key.currentContext?.findRenderObject() as RenderBox?;
     return box?.size ?? Size.zero;
   }
 

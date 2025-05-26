@@ -111,30 +111,32 @@ class _CardDeckViewState extends State<CardDeckView> {
             // 100-200, so it animates as the card leaves the stack
             // (ie. leaves the middle). It creates the gloss effect across
             // the face of the card as it flips.
-            .shimmer(delay: 100.ms, color: Colors.white70, angle: 3.1)
-            // This inherits the 100-200 timing from the shimmer. It animates
-            // the shadow behind the card as it flips.
-            .boxShadow(
-              begin: const BoxShadow(
-                color: Colors.black38,
-                blurRadius: 0,
-                spreadRadius: -4,
-                offset: Offset(0, 0),
-              ),
-              end: BoxShadow(
-                color: Colors.black.withOpacity(0),
-                blurRadius: 24,
-                offset: const Offset(-48, 0),
-              ),
-              borderRadius: BorderRadius.circular(24),
-            )
+            //----
+            // .shimmer(delay: 100.ms, color: Colors.white70, angle: 3.1)
+            // // This inherits the 100-200 timing from the shimmer. It animates
+            // // the shadow behind the card as it flips.
+            // .boxShadow(
+            //   begin: const BoxShadow(
+            //     color: Colors.black38,
+            //     blurRadius: 0,
+            //     spreadRadius: -4,
+            //     offset: Offset(0, 0),
+            //   ),
+            //   end: BoxShadow(
+            //     color: Colors.black.withOpacity(0),
+            //     blurRadius: 24,
+            //     offset: const Offset(-48, 0),
+            //   ),
+            //   borderRadius: BorderRadius.circular(24),
+            // )
+            //----
             // the following effects happen "to the card" (ex. moving it around)
             // so we'll add them at the end of the list.
             //
             // This rotation resets the delay to 0, thereby running from 0-100.
             // It subtley rotates the cards in the stack as they move to the front.
             .rotate(delay: 0.ms, curve: Curves.easeIn, begin: 0.02)
-            // The 2.5d card flip as it leaves the stack (100-200).
+            // // The 2.5d card flip as it leaves the stack (100-200).
             .flipH(
               delay: 100.ms,
               end: -0.15,

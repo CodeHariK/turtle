@@ -42,23 +42,28 @@ class _DigitalWalletViewState extends State<DigitalWalletView> {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _buildCarousel(),
-            const SizedBox(height: 16),
-            if (_activeIndex != null)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Column(
-                  key: ValueKey(_selectedIndex),
-                  children: List.generate(
-                    _selectedIndex % 3 + 3,
-                    (i) => _buildTransactionRow(i),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              //
+              _buildCarousel(),
+
+              const SizedBox(height: 16),
+
+              if (_activeIndex != null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Column(
+                    key: ValueKey(_selectedIndex),
+                    children: List.generate(
+                      _selectedIndex % 3 + 8,
+                      (i) => _buildTransactionRow(i),
+                    ),
                   ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -94,7 +99,7 @@ class _DigitalWalletViewState extends State<DigitalWalletView> {
       // the list doesn't get removed until they scroll fully off the card.
       onSelectedItemChanged: (i) => setState(() {
         _selectedIndex = i;
-        _activeIndex = null;
+        _activeIndex = i;
       }),
       onSettledItemChanged: (i) {
         if (i != null) setState(() => _activeIndex = i);
@@ -111,6 +116,7 @@ class _DigitalWalletViewState extends State<DigitalWalletView> {
           child: Row(
             children: [
               _box(width: 40, height: 40),
+              SizedBox(child: Text("$i")),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
